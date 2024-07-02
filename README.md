@@ -22,3 +22,8 @@ Analytical algorithms (CIDRE, BaSiC, and TAK) showed that performance depends si
 The deep learning method (Wang) initially performed poorly even on the training set. By using three training sets (TS1, TS2, and TS3), we found that incorporating both illumination patterns and textures (TS3) produced the best results. Patching images was ineffective; instead, using smaller crops with complete illumination patterns improved performance and reduced computational costs.
 ## Conclusion
 This study highlights the importance of input stack size, texture, and density in the performance of analytical algorithms for uneven illumination correction. For deep learning approaches, our findings suggest that effective training requires a global view of illumination patterns and textures. The designed training set TS3, which includes comprehensive augmentation, significantly improves performance. These insights are crucial for developing robust and efficient algorithms for uneven illumination correction in whole slide imaging.
+## Implementations
+You can find all needed implementations in "codes". 
+CIDRE and BaSiC reference repositories are https://github.com/smithk/cidre, and https://github.com/marrlab/BaSiC, respectively.
+TAK has been implemented in our lab. 
+Wang's source code has not been published. 
