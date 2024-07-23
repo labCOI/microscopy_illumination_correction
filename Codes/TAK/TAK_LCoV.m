@@ -1,4 +1,4 @@
-%% shading correction using pixel based algorithm according to:
+%% shading correction using pixel-based algorithm according to:
 % Tak, Yoon-Oh, et al. "Simple shading correction method for brightfield
 % whole slide imaging." Sensors 20.11 (2020): 3084.
 
@@ -42,25 +42,23 @@ for i = 1:num_ch
     [Min, inds] = min(LCoV);
     m(i) = inds;
     shading = Is_sort(:,:,inds);
-    flatfield(:,:,i) = shading ./ mean(mean(shading(:)));
+    flatfield(:,:,i) = shading ./ mean(shading(:));
 end
-toc
 
+path_to_save = 'C:\Hasti Shabani\2. Projects\1. Whole Slide Imaging\Data_WSI\TAK\051-04-80\';
 for i = 1:num_Im
     I = imread(strcat(directory,files(i).name));
     I = im2double(I);
     I = I ./ flatfield;
-    imwrite(I, ['img' num2str(i) '.tif']);
+    imwrite(I, [path_to_save 'TAK_'  files(i).name]);
 end
 
-% Istack = zeros(1719, 2304, 20);
-% for i = 1:20
-%    I = imread('C:\Users\Sama\Desktop\Folders\Datasets\051-04-80.tif', i);
-%    I = im2double(I);
-%    Istack(:,:,i) = I(:,:,2);
-% end
-% Isort = sort(Istack, 3);
-% for i = 1:20
-%    Isorted = Isort(:,:,i);
-%    imwrite(Isorted, '20Sorted image(green) 051-04-80.tif', 'WriteMode', 'append');
-% end
+toc
+
+%%% visualize_flatfield %%%
+
+totalRGB_flatfield_n = (flatfield - min(flatfield(:))) ./ (max(flatfield(:)) - min(flatfield(:));
+
+figure, imshow(totalRGB_flatfield_n); colorbar;
+
+imwrite(totalRGB_flatfield_n, [path_to_save 'TAK_flatfield_RGBminmaxscale.jpg'])
