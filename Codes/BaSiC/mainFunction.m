@@ -1,7 +1,7 @@
 close all; clear; clc;
 
 tic
-images_dir = 'C:\Users\Sama\Desktop\Master\Datasets\Empty-Zero\36-01/';
+images_dir = 'C:\Users\Sama\Desktop\Master\Datasets\36-01/';
 files = dir([images_dir '*.jpg']);
 I = imread(strcat(images_dir,files(1).name));
 [M, N, num_ch] = size(I);
